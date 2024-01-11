@@ -161,3 +161,6 @@ cython_debug/
 
 # Ignore mac specific files
 .DS_STORE
+
+
+/Data_Literacy_venv/
