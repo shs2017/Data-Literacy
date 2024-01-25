@@ -1,0 +1,98 @@
+In this section, describe \emph{what you did}. Roughly speaking, explain what data you worked with, how or from where it was collected, it's structure and size. Explain your analysis, and any specific choices you made in it. Depending on the nature of your project, you may focus more or less on certain aspects. If you collected data yourself, explain the collection process in detail. If you downloaded data from the net, show an exploratory analysis that builds intuition for the data, and shows that you know the data well. If you are doing a custom analysis, explain how it works and why it is the right choice. If you are using a standard tool, it may still help to briefly outline it. Cite relevant works. You can use the \verb|\citep| and \verb|\citet| commands for this purpose \citep{mackay2003information}.
+
+% This is the template for a figure from the original ICML submission pack. In lecture 10 we will discuss plotting in detail.
+% Refer to this lecture on how to include figures in this text.
+% 
+% \begin{figure}[ht]
+% \vskip 0.2in
+% \begin{center}
+% \centerline{\includegraphics[width=\columnwidth]{icml_numpapers}}
+% \caption{Historical locations and number of accepted papers for International
+% Machine Learning Conferences (ICML 1993 -- ICML 2008) and International
+% Workshops on Machine Learning (ML 1988 -- ML 1992). At the time this figure was
+% produced, the number of accepted papers for ICML 2008 was unknown and instead
+% estimated.}
+% \label{icml-historical}
+% \end{center}
+% \vskip -0.2in
+% \end{figure}
+
+\citet{mccarthy2023mortality} investigated whether mortality is compressed and there is a maximum limit to the length of life, or postponed and there is no such limit. The study found that throughout history, there have been phases of both compression and postponement. The authors suggest that if there is a limit on the length of life, it has not yet been reached and predict that there will be more longevity records in the future. 
+
+In contrast to the datasets we selected, \citet{fontana2010extending} had research on how dietary restrictions increase life expectancy and prevent illnesses such as diabetes, cancer and cardiovascular events. 
+
+
+
+The \href{https://phenome.jax.org/projects/ITP1}{ITP1: Interventions Testing Program: Effects of various treatments on lifespan and related phenotypes in genetically heterogeneous mice (UM-HET3) (2004-2023)} includes treatments with 40 different substances. Some of these are used in combination or at different doses. Two treatments were dropped due to missing data. This leaves a total of 65 different treatments.
+
+% Deleted data for PB125 (and Rapa_hi_start_stop) because of missing/wrong values
+
+
+The \href{https://www.levf.org/projects/robust-mouse-rejuvenation-study-1/study-updates/november-5th-2023}{Robust Mouse Rejuvenation} study includes different combinations of four interventions. In total, there are ten different treatments. Unfortunately we did not get access to their dataset, but their evaluation plots are available online and we had to extract the data ourselves. 
+
+
+\subsection{Interventions}
+\begin{itemize}
+    \item 17-a-estradiol (17aE2)
+    \item 17-dimethylaminoethylamino-17-demethoxygeldanamycin hydrochloride (DMAG)
+    \item 2-(2-Hydroxyphenyl)benzoxazole (HBX)
+    \item 3-(3-hydroxybenzyl)-5-methylbenzo[d]oxazol-2(3H)-one (MIF098)
+    \item 4-OH-a-phenyl-N-tert-butyl nitrone (4-OH-PBN)
+    \item Acarbose (ACA) is an antidiabetic, which means it lowers the level of glucose in the blood, and can help improve weight control and the risk of cardiovascular events \cite{mccarty2015acarbose}. These events can be reduced by preventing the hyperglycaemic spikes after a meal \cite{mccarty2015acarbose}.
+    \item aspirin (Asp)
+    \item b-guanidinopropionic acid (bGPA)
+    \item caffeic acid phenethyl ester (CAPE)
+    \item canagliflozin (Cana)
+    \item candesartan cilexetil (CC)
+    \item captopril (Capt)
+    \item curcumin (Cur)
+    \item enalapril (Enal)
+    \item fish oil (FO)
+    \item geranylgeranyl acetone (GGA)
+    \item glycine (Gly)
+    \item green tea extract (GTE)
+    \item INT-767 FXR/TGR5 agonist (INT-767)
+    \item inulin (Inu)
+    \item L-leucine (Leu)
+    \item medium-chain triglyceride oil (MCTO)
+    \item metformin (Met)
+    \item metformin and rapamycin (MetRapa)
+    \item methylene blue (MB)
+    \item minocycline (Min)
+    \item MitoQ (MitoQ)
+    \item nicotinamide riboside (NR)
+    \item nitroflurbiprofen (NFP)
+    \item nordihydroguaiaretic acid (NDGA)
+    \item oxaloacetic acid (OAA)
+    \item Protandim (Prot)
+    \item Rapamycin (Rapa) is an inhibitor of mTOR, the mammalian target of rapamycin. According to \citet{li2014rapamycin}, mTOR is a master regulator of cell growth and metabolism. It has been found that a defect in the mTOR signalling pathway is part of several diseases including cancer and diabetes \cite{li2014rapamycin}. Rapamycin also has an immunosuppressive effect \cite{saunders2001rapamycin}.
+    \item rapamycin and acarbose (RaAc)
+    \item resveratrol (Res)
+    \item (R/S)-1,3-butanediol (BD)
+    \item simvastatin (Sim)
+    \item sulindac (Sul)
+    \item syringaresinol (Syr)
+    \item TM5441 (TM5441)
+    \item ursodeoxycholic acid (UDCA)
+    \item ursolic acid (UA)
+    
+    \item Haematopoietic stem cells (HSCs): Haematopoietic stem cells are the cells responsible for making blood cells. These cells have the ability to make all types of blood cells. These include white blood cells, red blood cells and platelets. HSCs from young mice could lead to life extension in old mice. This is shown by a number of studies \cite{levf_update1}\cite{robust_mouse_study_1}.
+    
+    \item Galactose-conjugated Navitovclax (Gal-Nav): Navitoclax is a senolytic that reduces the number of senescent cells. These are cells that no longer divide, which is a protection against cancer \cite{collado2007cellular}. Treatment with senolytics can, for example, save nerve cells \cite{wagner2023aging}. Reducing senescent cells could reduce cancer and immune decline \cite{robust_mouse_study_1}. Navitoclax is toxic to platelets, so they have conjugated it with the sugar galactose. This conjugate is inactive and can be activated by galactosidase (in senescent cells) \cite{levf_update1}.
+    
+    \item Telomerase Gene Therapy (mTERT): The telomeres of the chromosomes shorten with each cell division until they can no longer divide and the cell becomes senescent. Telomerase, which is not inactive in most normal cells, causes the cells to divide again. \citet{bernardes2012telomerase}Bernardes De Jesus et al. state that a characteristic of human cancer cells is the overexpression of telomerase reverse transcriptase (TERT). Increased TERT expression in mice genetically modified for cancer resistance effectively reduces age-related telomere damage, leading to a delay in the ageing process. In addition, the accelerated ageing caused by telomere shortening can be partially alleviated by reactivating telomerase \cite{bernardes2012telomerase}. 
+\end{itemize}
+
+\subsection{Gompertz Law of Mortality}
+The Gompertz law of mortality \cite{gompertz} is a mathematical model that describes the mortality rate of populations as they age. The Gompertz law is expressed by the following equation:
+
+\[ \mu(x) = \alpha \cdot e^{\beta x} \]
+\begin{enumerate}
+\item  \( \mu(x) \): The force of mortality at age \( x \), which is the instantaneous rate of death for individuals at age \( x \).
+
+\item \( \alpha \): The baseline mortality rate or the initial level of mortality at a given age. It reflects the risk of death at the start of the aging process.
+
+\item \( \beta \): The Gompertz coefficient, influencing the rate of increase in mortality with age. It characterizes the exponential growth in mortality with advancing age.
+\end{enumerate}
+
+The Gompertz law is particularly useful for modeling mortality rates in adult populations, as it captures the increasing risk of death that comes with age.
