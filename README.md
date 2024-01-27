@@ -15,6 +15,11 @@ This repository contains the code which was used for the
 Data Literacy Paper Project "Predicting most Efficient
 Interventions for Life Span Increase".
 
+## Abstract
+In this project we use data from the ongoing [Robust Mouse Rejuvination (RMR)](https://www.levf.org/projects/robust-mouse-rejuvenation-study-1) study to predict the effects of multiple interventions on
+the lifespan of mice. We analyzed how each intervention influenced the lifespan and tried to identify combinations that could yield the most substantial longevity increase. By forecasting which factors are pivotal for a noteworthy increase in lifespan, we aim to pinpoint combinations worthy of further exploration. 
+To achieve this, we utilized the latest data from the RMR study it before the their conclusion. Subsequently we trained a linear model on the data to predict the expected lifespan given a set of treatments.  
+
 ---
 ## Directory Structure
 - **dat** contains data files. The data from *final_datasets* was used for the analysis 
