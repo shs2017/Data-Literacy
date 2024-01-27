@@ -1,4 +1,4 @@
-<p align="center">
+<div style="displax: flex; margin-right: 10px">
   <h1 align="center"> Predicting most Efficient Interventions for Life Span Increase</h1>
   <img src="fig/2401_sanity_check_male_final.svg" width="500">
   <img src="fig/2401_sanity_check_female_final.svg" width="500">
