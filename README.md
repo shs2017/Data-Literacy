@@ -1,7 +1,15 @@
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
-    <h1 align="center"> Predicting most Efficient Interventions for Life Span Increase</h1>
-    <img src="fig/2401_sanity_check_male_final.svg" alt="First Image" style="max-width: 48%; height: auto; margin: 1%;"> <img src="fig/2401_sanity_check_female_final.svg" alt="Second Image" style="max-width: 48%; height: auto; margin: 1%;">
-</div>
+<h1 align="center"> Predicting most Efficient Interventions for Life Span Increase</h1>
+
+<table>
+  <tr>
+    <td>
+      <img src="fig/2401_sanity_check_male_final.svg" alt="RMR Male Plot">
+    </td>
+    <td>
+      <img src="fig/2401_sanity_check_female_final.svg" alt="Second Image">
+    </td>
+  </tr>
+</table>
 
 This repository contains the code which was used for the
 Data Literacy Paper Project "Predicting most Efficient
