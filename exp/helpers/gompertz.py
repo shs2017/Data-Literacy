@@ -10,6 +10,45 @@ from typing import Any
 def gompertz(x: Any, alpha: np.float64, beta: np.float64):
     return alpha * np.exp(beta * x)
 
+class Parameters:
+    def __init__(self, dataset):
+        self.dataset = dataset
+
+        self.alphas = {}
+        self.betas = {}
+
+    def compute(self):
+        for key, current_dataset in self.dataset.items():
+            all_ages = calculate_ages(current_dataset)
+            all_mortality_rate = calculate_mortality_rate(current_dataset)
+            
+            predicted_parameters = fit_gompertz_model(all_ages, all_mortality_rate)
+            
+            self.alphas[key] = predicted_parameters.alpha
+            self.betas[key] = predicted_parameters.beta
+        return self
+
+    def __getitem__(self, key):
+        return (self.alphas[key], self.betas[key])
+
+    def keys(self):
+        return self.alphas.keys()
+
+def compute_alpha_and_beta(dataset):
+    alpha_parameters = {}
+    beta_parameters = {}
+    
+    for key, current_dataset in dataset.items():
+        all_ages = calculate_ages(current_dataset)
+        all_mortality_rate = calculate_mortality_rate(current_dataset)
+        
+        predicted_parameters = fit_gompertz_model(all_ages, all_mortality_rate)
+        
+        alpha_parameters[key] = predicted_parameters.alpha
+        beta_parameters[key] = predicted_parameters.beta
+    
+    return alpha_parameters, beta_parameters
+
 @dataclass
 class GompertzParameters:
     alpha: np.float64
