@@ -8,13 +8,17 @@ ALL_GROUP = 'All'
 ONE_REMOVED_PREFIX = 'no_'
 
 
-def is_one_removed_intervention(key):
+def is_one_removed_intervention(key: str) -> bool:
+    """Returns true if the key includes threes interventions
+       (i.e. one removed out of the four interventions)"""
     if len(key) < 3:
         return False
 
     return key[:len(ONE_REMOVED_PREFIX)] == ONE_REMOVED_PREFIX
 
 def convert_one_removed_intervention_key_to_canonical_key(key: str, intervention_list: []) -> []:
+    """Converts a one-removed/three intervention name to it's canonical name
+       (e.g. 'No_InterventionA' => 'InterventionB,InterventionC,InterventionD')"""
     removed_key = key[len(ONE_REMOVED_PREFIX):]
 
     removed_intervention_list = []
@@ -25,6 +29,9 @@ def convert_one_removed_intervention_key_to_canonical_key(key: str, intervention
     return removed_intervention_list
 
 def create_canonical_intervention_key(key: str, intervention_list: []):
+    """Converts the default intervention name to its canonical name, which
+       is a comma seperated list of the interventions in `key` from
+       `intervention_list`"""
     canonical_interventions = None
     
     if key == ALL_GROUP:
@@ -50,6 +57,7 @@ def load_csv(path: str) -> pd.DataFrame:
             )
 
 def extract_one_intervention_keys(dataset: pd.DataFrame) -> [str]:
+    """Returns the list of intervention names where there is exactly one intervention"""
     categories = dataset[CATEGORY_COLUMN].unique()
 
     single_interventions = []
@@ -66,6 +74,7 @@ def extract_one_intervention_keys(dataset: pd.DataFrame) -> [str]:
     return single_interventions
 
 def create_two_intervention_keys(one_interventions: [str]) -> [str]:
+    """Returns the list of intervention names where there is exactly two interventions"""
     two_interventions = []
     for i in range(len(one_interventions)):
         for j in range(i + 1, len(one_interventions)):
@@ -74,15 +83,20 @@ def create_two_intervention_keys(one_interventions: [str]) -> [str]:
     return two_interventions
 
 def extract_three_intervention_keys(dataset: dict) -> [str]:
+    """Returns the list of intervention names where there is exactly three interventions"""
     return [intervention for intervention in dataset.keys() if intervention.count(',') == 2]    
 
 def extract_four_intervention_keys(dataset: dict) -> str:
+    """Returns the list of intervention names where there is only exactly interventions"""
     for intervention in dataset.keys():
         if intervention.count(',') == 3:
             return intervention
     raise ValueError('No four intervention data found')
 
 def create_dataset_mapping(dataset, single_interventions: []) -> dict:
+    """Returns the dictionary mapping intervention names to their resp. data
+       where `single_interventions` is a list of the interventions names
+       with only one intervention"""
     dataset_by_category = {}
     for intervention in dataset[CATEGORY_COLUMN].unique():
         key = create_canonical_intervention_key(intervention, single_interventions)

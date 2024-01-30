@@ -44,6 +44,8 @@ class NoInterventionMortalityRate:
 
 
 def compute_mortality_per_intervention(arguments: MortalityRateArguments):
+    """ Returns a list of predicted mortality rates for the interventions
+        against `evaluation_ages`"""
     mortality = []
 
     for key in arguments.intervention_keys:
@@ -54,6 +56,8 @@ def compute_mortality_per_intervention(arguments: MortalityRateArguments):
 
 
 def compute_actual_mortalities(dataset, ages):
+    """Computes the estimated mortality rate against `ages`"""
+
     parameters = Parameters(dataset.copy()).compute()
 
     mortality = {}
@@ -173,6 +177,8 @@ class MortalityRateFactory:
 
 
 def compute_mortality_by_n_interventions(dataset, ages, parameters, intervention_keys):
+    """Computes the estimated mortality rate by key against `ages`"""
+
     mortality = []
     for key in intervention_keys:
         mortality_rate = calculate_mortality_rate(dataset[key])

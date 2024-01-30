@@ -11,6 +11,9 @@ def gompertz(x: Any, alpha: np.float64, beta: np.float64):
     return alpha * np.exp(beta * x)
 
 class Parameters:
+    """Stores the alpha and beta parameters of the Gompertz curve
+       for all intervention combinations in the dataset"""
+
     def __init__(self, dataset):
         self.dataset = dataset
 
@@ -35,6 +38,9 @@ class Parameters:
         return self.alphas.keys()
 
 def compute_alpha_and_beta(dataset):
+    """Returns all alpha and beta parameters of the Gompertz curve
+       for each intervention combination in the dataset"""
+
     alpha_parameters = {}
     beta_parameters = {}
     
@@ -82,4 +88,5 @@ def calculate_ages(dataset) -> np.array:
     return np.array(dataset.x) / 365 # ages in years
 
 def calculate_mortality_rate(dataset) -> np.array:
+    """Converts a survival rate dataset into a mortality rate dataset"""
     return np.array(1 - dataset.y)
