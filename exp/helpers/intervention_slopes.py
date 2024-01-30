@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 
 class InterventionSlopes:
+    """Compute and stores the slop of the log mortality rate"""
+
     def __init__(self):
         self.slopes = {}
 

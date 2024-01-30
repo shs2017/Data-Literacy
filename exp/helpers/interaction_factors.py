@@ -4,6 +4,12 @@ from itertools import combinations
 
 
 class InteractionFactors:
+    """Computes and stores the intervention interaction factors.
+       Namely if intervention A and B have effects e_a and e_b
+       individually and their combination has an effect e_ab,
+       then the interaction factor will be e_ab - e_a - e_b.
+       That is, it measures the non-linearity of the interaction"""
+
     # Here we have the linear model
     # the (i, j) entry being one in a row
     # represents the (i, j) factor
