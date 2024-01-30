@@ -33,7 +33,7 @@ To achieve this, we utilized the latest data from the RMR study it before the th
 | 001_GompertzAssumption       | Giving evidence to the assumption that the mortality rates of mice fit to the Gompertz-Makeham Law of Mortality.          |
 | 002_ExtractingPointsFromPlot | Preprocessing of the manual elicited data points from the RMR reports. <br>Reproduction for the Figures in the README.md. |
 | 003_MotivationalAnalysis     | We show that there has been a strong increase in scientific publications on the topic of ageing, particularly since 2015. |
-| 004_SecondOrderModel   | Here we created a linear model with interactions terms to predict the best intervention combinations.                                            |
+| 004_SecondOrderModel   | Here we created a linear model with interaction terms to predict the best intervention combinations.                                            |
 | 005_MLPModel             | Here we created a MLP model to predict the best intervention combinations.                                            |
 
 [//]: # (TODO: Add which experiment produced which Figure. Add to each experiment description "<br>Reproduction for Figure X." if it contributes to one of the shown figures in the paper)
