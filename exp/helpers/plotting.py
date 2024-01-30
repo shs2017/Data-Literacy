@@ -88,10 +88,11 @@ class ThreeInterventionPlotter:
         
             # Plot
             axis[i][j].scatter(current_ages, actual_log_mortality_rate, label='Observed Data', color=COLOR_MAP[0])
-            axis[i][j].plot(ages, log_mortality_rate, label='All Gompertz Fit', color=COLOR_MAP[1])
+            axis[i][j].plot(ages, log_mortality_rate, label=intervention_key, color=COLOR_MAP[1])
+            axis[i][j].legend()
                 
             axis[i][j].set_xlabel('Age of Mice (Years)')
-            axis[i][j].set_ylabel(f'Mortality Rate ({intervention_key})')
+            axis[i][j].set_ylabel(f'Mortality Rate')
 
             if j == 1:
                 i += 1
@@ -105,11 +106,12 @@ class ThreeInterventionPlotter:
 class AllInterventionPlotter:
     def plot(self, dataset: dict, ages: np.array, log_mortality: Union[dict, np.array], key: str) -> None:
         # plt.scatter(all_interventions_ages, log_mortality_rate, label='Observed Data', color=COLOR_MAP[0])
-        plt.plot(ages, log_mortality, label='All Gompertz Fit', color=COLOR_MAP[1])
+        plt.plot(ages, log_mortality, label='All Interventions', color=COLOR_MAP[1])
         plt.xlabel('Age of Mice (Years)')
         plt.ylabel(f'Mortality Rate')
         plt.legend()
         plt.show()
+
 
 class Plotter:
     def __init__(self, dataset: dict, ages: np.array, log_mortality: np.array, keys: str) -> None:

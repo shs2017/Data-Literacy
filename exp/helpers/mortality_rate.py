@@ -32,6 +32,7 @@ class MortalityRate:
         
         return np.log(self.values + EPS)
 
+
 class NoInterventionMortalityRate:
     def __init__(self, arguments: MortalityRateArguments):
         no_intervention_ages = calculate_ages(arguments.dataset[arguments.intervention_keys])
@@ -40,6 +41,7 @@ class NoInterventionMortalityRate:
         predicted_parameters = fit_gompertz_model(no_intervention_ages, no_intervention_mortality_rate)
         predicted_mortality = gompertz(arguments.evaluation_ages, predicted_parameters.alpha, predicted_parameters.beta)
         self.mortality_rate = MortalityRate(predicted_mortality)
+
 
 def compute_mortality_per_intervention(arguments: MortalityRateArguments):
     mortality = []
@@ -50,6 +52,18 @@ def compute_mortality_per_intervention(arguments: MortalityRateArguments):
         mortality.append(gompertz(arguments.evaluation_ages, alpha, beta))
     return mortality
 
+
+def compute_actual_mortalities(dataset, ages):
+    parameters = Parameters(dataset.copy()).compute()
+
+    mortality = {}
+    for key in parameters.keys():
+        alpha, beta = parameters[key]
+        mortality[key] = gompertz(ages, alpha, beta)
+
+    return mortality
+
+
 class OneInterventionsMortalityRate:
     def __init__(self, arguments: MortalityRateArguments):
         one_interventions_mortality = compute_mortality_per_intervention(arguments)
@@ -59,6 +73,7 @@ class OneInterventionsMortalityRate:
             mortality_rates[key] = mortality_rate
 
         self.mortality_rate = MortalityRate(mortality_rates)
+
 
 class TwoInterventionsMortalityRate:
 
@@ -77,6 +92,7 @@ class TwoInterventionsMortalityRate:
                 interaction_factor_index += 1
         
         self.mortality_rate = MortalityRate(mortality_rates)
+
 
 class ThreeInterventionsMortalityRate:
     INTERVENTION_INDICES = np.array([
@@ -135,6 +151,7 @@ class AllInterventionsMortalityRate:
         interactions = np.array(arguments.interaction_factors.to_numpy()).sum(axis=1)
         mortality_rate = interactions + interventions
         self.mortality_rate = MortalityRate(mortality_rate)
+
 
 class MortalityRateFactory:
     def __init__(self, n_interventions):
