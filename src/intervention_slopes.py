@@ -1,5 +1,9 @@
 import matplotlib.pyplot as plt
 
+from tueplots import bundles
+
+COLOR_MAP = ["#ADD8E6", "#008000", "#FFD700", "#800080", "#FF7F50", "#40E0D0", "#708090", "#FF8C00", "#FF00FF", "#008080"]
+
 class InterventionSlopes:
     def __init__(self):
         self.slopes = {}
@@ -25,13 +29,16 @@ class InterventionSlopes:
         return best_intervention
     
     def plot_inverse_slopes(self):
-        fig = plt.figure(figsize=(15, 3))
+        plt.rcParams.update(bundles.icml2022(column='full', nrows=1, ncols=1, usetex=False))
 
         inverse_sorted_slopes = self._calculate_inverse_sorted_slopes()
-        for key, slope in inverse_sorted_slopes.items():
-            plt.bar(key, slope)
+        keys, slopes = zip(*inverse_sorted_slopes.items())
+        cmap = plt.cm.viridis
+        norm = plt.Normalize(min(slopes), max(slopes))
+        colors = cmap(norm(slopes))
+        plt.bar(keys, slopes, color=colors)
 
-        plt.xticks(rotation=-90)
+        plt.xticks(rotation=45)
         plt.ylabel(f'1 / Slope')
         plt.title('Ranked Interventions (Best to worst)')
         plt.show()

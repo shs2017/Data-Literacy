@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from typing import Union
+from tueplots import bundles
 
 from .gompertz import *
 
@@ -11,6 +12,7 @@ COLOR_MAP = ["#ADD8E6", "#008000", "#FFD700", "#800080", "#FF7F50", "#40E0D0", "
 
 class NoInterventionPlotter:
     def plot(self, dataset: dict, ages: np.array, log_mortality: np.array, key: str) -> None:
+        plt.rcParams.update(bundles.icml2022(column='full', nrows=2, ncols=2, usetex=False))
         no_intervention_ages = calculate_ages(dataset[key])
 
         no_intervention_mortality_rate = calculate_mortality_rate(dataset[key])
@@ -29,6 +31,7 @@ class OneInterventionPlotter:
     FIG_SIZE = (15, 10)
 
     def plot(self, dataset: dict, ages: np.array, log_mortality: dict, keys: str) -> None:
+        plt.rcParams.update(bundles.icml2022(column='full', nrows=2, ncols=2, usetex=False))
         fig, axis = plt.subplots(self.N_COLUMNS, self.N_ROWS, figsize=self.FIG_SIZE)
         
         for i in range(len(keys) // self.N_COLUMNS):
@@ -48,7 +51,6 @@ class OneInterventionPlotter:
                 axis[i][j].set_xlabel('Age of Mice (Years)')
                 axis[i][j].set_ylabel(f'Mortality Rate ({intervention_key})')
         
-        plt.tight_layout()
         plt.show()
 
 class TwoInterventionPlotter:
@@ -56,7 +58,7 @@ class TwoInterventionPlotter:
     N_INTERVENTIONS = 4
 
     def plot(self, dataset: dict, ages: np.array, log_mortality: dict, key: str) -> None:
-        fig = plt.figure(figsize=(15, 5))
+        plt.rcParams.update(bundles.icml2022(column='full', nrows=1, ncols=1, usetex=False))
 
         interaction_factor_index = 0
         for intervention_key, log_mortality_rate in log_mortality.items():
@@ -76,6 +78,7 @@ class ThreeInterventionPlotter:
     FIG_SIZE = (15, 10)
 
     def plot(self, dataset: dict, ages: np.array, log_mortality: dict, key: str) -> None:
+        plt.rcParams.update(bundles.icml2022(column='full', nrows=2, ncols=2, usetex=False))
         fig, axis = plt.subplots(self.N_COLS, self.N_ROWS, figsize=self.FIG_SIZE)
         
         i = 0
@@ -100,11 +103,11 @@ class ThreeInterventionPlotter:
             else:
                 j += 1
 
-        plt.tight_layout()
         plt.show()
 
 class AllInterventionPlotter:
     def plot(self, dataset: dict, ages: np.array, log_mortality: Union[dict, np.array], key: str) -> None:
+        plt.rcParams.update(bundles.icml2022(column='full', nrows=1, ncols=1, usetex=False))
         # plt.scatter(all_interventions_ages, log_mortality_rate, label='Observed Data', color=COLOR_MAP[0])
         plt.plot(ages, log_mortality, label='All Interventions', color=COLOR_MAP[1])
         plt.xlabel('Age of Mice (Years)')
